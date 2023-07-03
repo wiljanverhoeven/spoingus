@@ -34,14 +34,37 @@ let cucumber2Img;
 let cucumber3Img;
 
 //physics
+
 let velocityX = -8; //cucumber movement speed
 let velocityY = 0;
 let gravity = .4;
 
+
 let gameOver = false;
 let score = 0;
+let pause = false;
 
-window.onload = function () {	
+document.getElementById("start").onclick = playGame;
+
+function resumeGame() {
+    pause = false;
+    document.getElementById("resume").style.display = "none";
+    document.getElementById("pause").style.display = "inline";
+    document.getElementById("audioplayer").play();
+    update();
+}
+
+
+function pauseGame() {
+    pause = true;
+    document.getElementById("resume").style.display = "inline";
+    document.getElementById("pause").style.display = "none";
+    document.getElementById("audioplayer").pause();
+}
+
+
+function playGame() {	
+    document.getElementById("hold").style.display = "inline";
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
@@ -72,9 +95,14 @@ window.onload = function () {
     }
 
 function update() {
+    if (pause) {
+        return;
+    }
     requestAnimationFrame(update);
     if(gameOver) {
-        return;
+        document.getElementById("audioplayer").pause();
+        turnOn();
+        return; 
     }
     context.clearRect(0, 0, board.width, board.height);
 
@@ -103,7 +131,7 @@ context.fillStyle = "black";
 context.font="20px Courier";
 score++;
 context.fillText(score, 5, 20);
-}
+} 
 
 function moveSpoingus(e) {
     if(gameOver) {
@@ -120,6 +148,9 @@ function moveSpoingus(e) {
 
 function placeCucumbers() {
     if(gameOver) {
+        return;
+    }
+    if (pause) {
         return;
     }
     
@@ -161,6 +192,15 @@ function detectCollision(a, b) {
            a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
            a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
 }
+
+function restartGame() {
+    location.reload();
+}
+
+function turnOn() {
+    document.getElementById("youLost").style.display = "block";
+}
+
 
 
 

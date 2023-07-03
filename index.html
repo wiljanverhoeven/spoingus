@@ -8,8 +8,22 @@
         <script src="game.js"></script>
     </head>
     <img>
+    <div id="window">
         <h1>spoingus</h1>
-        <canvas id="board"></canvas>
+        <button id="start" onclick="playGame(),style.display = 'none'">Start</button>
+        <div id="hold">
+            <button id="pause" onclick="pauseGame()">pause</button>
+            <button id="resume" onclick="resumeGame()">resume</button>
+        </div>
+        <canvas id="board"> </canvas>
         <audio id="audioplayer" src="avenged-sevenfold_avenged-sevenfold-unholy-confessions.mp3" visible="false" loop></audio>
+       
+        <div id="youLost">
+            <div>
+                <h1>you lost</h1>
+                <button id="go back" onclick="restartGame()">go back</button>
+            </div>
+        </div>
+    </div>   
     </body>
 </html>
