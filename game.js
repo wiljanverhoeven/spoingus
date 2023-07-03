@@ -45,6 +45,7 @@ window.onload = function () {
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
+    
 
     context = board.getContext("2d"); //used for drawing on the board
      
@@ -67,6 +68,7 @@ window.onload = function () {
     requestAnimationFrame(update);
     setInterval(placeCucumbers, 1000); //1000 milliseconds = 1 second
     document.addEventListener("keydown", moveSpoingus);
+    document.getElementById("audioplayer").play();
     }
 
 function update() {
