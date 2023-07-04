@@ -1,18 +1,18 @@
 body {
-    font-family:'Courier New', Courier, monospace;
-    text-align: center;
+    font-family:'Courier New', Courier, monospace; /* sets Monospace font */
+    text-align: center; /* centers text */
 }
 
 #board {
-    background-color: lightgray;
-    border-bottom: 1px solid black;
-    width: 750px;
-    height: 250px;
+    background-color: lightgray; /* sets background color */
+    border-bottom: 1px solid black; /* sets bottom border */
+    width: 750px;  /* sets width */
+    height: 250px; /* sets height */
 }
 #start {
-    position: absolute;
-    top: 20%;
-    left: 49%;
+    position: absolute; /* sets position to absolute to have better control over the object */
+    top: 20%; /* sets top position offset*/
+    left: 49%; /* sets left position offset*/
 }
 
 #youLost {
@@ -20,27 +20,27 @@ body {
     display: none; /* Hidden by default */
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; /* Set top position offset*/
+    left: 0; /* Set left position offset*/
+    right: 0; /* Set right position offset*/
+    bottom: 0; /* Set bottom position offset*/
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     z-index: 2;  /* Specify a stack order in case you're using a different order for other elements */
-    color: red;
+    color: red; /* sets text color */
   }
 
 #pause {
-    position: absolute;
-    display: inline;
-    left: 66.7%;
-    width: 60px;
+    position: absolute; /* sets position to absolute to have better control over the object */
+    display: inline; /* sets display to inline to make it fall inline with the canvas*/
+    left: 66.7%; /* sets left position offset*/
+    width: 60px; /* sets width */
 }
 #resume {
-    position: absolute;
-    display: none;
-    left: 66.7%;
-    width: 60px;
+    position: absolute; /* sets position to absolute to have better control over the object */
+    display: none; /* sets display to none to hide the object */
+    left: 66.7%; /* sets left position offset*/
+    width: 60px; /* sets width */
 }
 #hold {
-    display: none;
+    display: none; /* sets display to none to hide the object */
 }

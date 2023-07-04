@@ -8,20 +8,20 @@
         <script src="game.js"></script>
     </head>
     <img>
-    <div id="window">
-        <h1>spoingus</h1>
-        <button id="start" onclick="playGame(),style.display = 'none'">Start</button>
-        <div id="hold">
-            <button id="pause" onclick="pauseGame()">pause</button>
-            <button id="resume" onclick="resumeGame()">resume</button>
+    <div id="window"> <!-- this is the window that holds everything -->
+        <h1>spoingus</h1> <!-- this is the title of the game -->
+        <button id="start" onclick="playGame(),style.display = 'none'">Start</button> <!-- this is the start button -->
+        <div id="hold"> <!-- this is the div that holds the pause and resume buttons -->
+            <button id="pause" onclick="pauseGame()">pause</button> <!-- this is the pause button -->
+            <button id="resume" onclick="resumeGame()">resume</button><!-- this is the resume button -->
         </div>
-        <canvas id="board"> </canvas>
-        <audio id="audioplayer" src="avenged-sevenfold_avenged-sevenfold-unholy-confessions.mp3" visible="false" loop></audio>
+        <canvas id="board"> </canvas> <!-- this is the canvas that holds the game -->
+        <audio id="audioplayer" src="avenged-sevenfold_avenged-sevenfold-unholy-confessions.mp3" visible="false" loop></audio> <!-- this is the invisible audio player -->
        
-        <div id="youLost">
+        <div id="youLost"> <!-- this is the div that holds the you lost screen -->
             <div>
-                <h1>you lost</h1>
-                <button id="go back" onclick="restartGame()">go back</button>
+                <h1>you lost</h1> <!-- this is the you lost text -->
+                <button id="go back" onclick="restartGame()">go back</button> <!-- this is the button you see after a game over and is used to go back -->
             </div>
         </div>
     </div>   
