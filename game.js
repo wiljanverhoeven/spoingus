@@ -38,6 +38,9 @@ let gravity = .4;// spoingus fall speed
 let gameOver = false; //game over boolean
 let score = 0; //defines score
 let pause = false; //pause boolean
+let x = 1; //defines x
+
+var weezer = new Audio('buddy-holly-weezer-guitar-lick.mp3'); //defines lose music music
 
 function pauseGame() { //when the pause button is clicked the game will pause.
     pause = true; //sets pause boolean to true
@@ -112,6 +115,7 @@ function update() { //runs every second to update the game
 
     if (detectCollision(spoingus, cucumber)) { //if spoingus collides with a cucumber the game will end
         gameOver = true; //sets game over boolean to true
+        weezer.play(); //plays the weezer song
         spoingusimg.src = "images/bingus.png"; //sets spoingus image to bingus
         spoingusimg.onload = function () { //when spoingus(bingus) image loads it will be drawn on the board
             context.drawImage(spoingusimg, spoingus.x, spoingus.y, spoingus.width, spoingus.height); //draws spoingus (bingus)
@@ -188,8 +192,10 @@ function restartGame() { //restarts the game
 }
 
 function turnOn() { //turns on the game over screen
-    document.getElementById("youLost").style.display = "block"; //displays the game over screen
-}
+    document.getElementById("youLost").style.display = "block"; //displays the game over screen 
+
+    }
+
 
 
 
