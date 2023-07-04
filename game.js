@@ -126,72 +126,69 @@ score++; //adds 1 to score
 context.fillText(score, 5, 20); //draws score
 } 
 
-function moveSpoingus(e) {
-    if(gameOver) {
+function moveSpoingus(e) { //when space or up arrow is pressed spoingus will jump
+    if(gameOver) { //if the game is over spoingus will not jump
         return;
     }
-    if ((e.code == "Space" || e.code == "ArrowUp") && spoingus.y == spoingusY) {
-        //jump
-        velocityY = -10;
-    }
-    else if (e.code == "ArrowDown" && spoingus.y == spoingusY) {
-        //duck
+    if ((e.code == "Space" || e.code == "ArrowUp") && spoingus.y == spoingusY) { //if space or up arrow is pressed and spoingus is on the ground spoingus will jump
+        
+        velocityY = -10; //sets velocityY to -10 so spoingus will jump
     }
 }
 
-function placeCucumbers() {
-    if(gameOver) {
+function placeCucumbers() { //places cucumbers
+    if(gameOver) { //if the game is over cucumbers will not be placed
         return;
     }
-    if (pause) {
+    if (pause) { //if the game is paused cucumbers will not be placed
         return;
     }
     
     //place cucumbers
-    let cucumber = {
-        img : null,
-        x : cucumberX,
-        y : cucumberY,
-        width : null,
-        height : cucumberHeight
+    let cucumber = { //defines cucumber
+        img : null, //sets cucumber image to null
+        x : cucumberX, //sets cucumber x position
+        y : cucumberY, //sets cucumber y position
+        width : null, //sets cucumber width to null 
+        height : cucumberHeight //sets cucumber height
     }
 
-    let placeCucumberChance = Math.random();
+    let placeCucumberChance = Math.random(); //sets placeCucumberChance to a random number between 0 and 1
 
-    if (placeCucumberChance > .90) {
-        cucumber.img = cucumber1Img;
-        cucumber.width = cucumber1Width;
-        cucumbers.push(cucumber);
+    if (placeCucumberChance > .90) { //if placeCucumberChance is greater than .90 cucumber1 will be placed
+        cucumber.img = cucumber1Img; //sets cucumber image to cucumber1 image
+        cucumber.width = cucumber1Width; //sets cucumber width to cucumber1 width
+        cucumbers.push(cucumber); //adds cucumber to cucumbers array
     }
-    else if (placeCucumberChance > .70) {
-        cucumber.img = cucumber2Img;
-        cucumber.width = cucumber2Width;
-        cucumbers.push(cucumber);
+    else if (placeCucumberChance > .70) { //if placeCucumberChance is greater than .70 cucumber2 will be placed
+        cucumber.img = cucumber2Img; //sets cucumber image to cucumber2 image
+        cucumber.width = cucumber2Width; //sets cucumber width to cucumber2 width
+        cucumbers.push(cucumber); //adds cucumber to cucumbers array
     }
-    else if (placeCucumberChance > .50) {
-        cucumber.img = cucumber3Img;
-        cucumber.width = cucumber3Width;
-        cucumbers.push(cucumber);
+    else if (placeCucumberChance > .50) { //if placeCucumberChance is greater than .50 cucumber3 will be placed
+        cucumber.img = cucumber3Img; //sets cucumber image to cucumber3 image
+        cucumber.width = cucumber3Width; //sets cucumber width to cucumber3 width
+        cucumbers.push(cucumber); //adds cucumber to cucumbers array
     }
 
-    if (cucumbers.length > 5) {
+    if (cucumbers.length > 5) { //if cucumbers array is greater than 5
         cucumbers.shift(); //remove the first element from the array so that the array doesn't constantly grow
     }
 }
 
-function detectCollision(a, b) {
+function detectCollision(a, b) { //detects collision between spoingus and cucumbers
     return a.x < b.x + b.width &&   //a's top left corner doesn't reach b's top right corner
            a.x + a.width > b.x &&   //a's top right corner passes b's top left corner
            a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
            a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
 }
 
-function restartGame() {
-    location.reload();
+function restartGame() { //restarts the game
+    location.reload(); //reloads the page
 }
 
-function turnOn() {
-    document.getElementById("youLost").style.display = "block";
+function turnOn() { //turns on the game over screen
+    document.getElementById("youLost").style.display = "block"; //displays the game over screen
 }
 
 
