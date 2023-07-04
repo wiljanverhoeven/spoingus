@@ -79,48 +79,51 @@ function playGame() {	//when the start button is clicked the game will start.
     cucumber3Img.src = "images/cucumber3.png"; //sets cucumber3 image source
 
     requestAnimationFrame(update);
-    setInterval(placeCucumbers, 1000); //1000 milliseconds = 1 second
-    document.addEventListener("keydown", moveSpoingus);
-    document.getElementById("audioplayer").play();
+    setInterval(placeCucumbers, 1000); //sets an interval for placecucumbers every (1000 milliseconds = 1 second)
+    document.addEventListener("keydown", moveSpoingus);  // when space or up arrow is pressed spoingus will jump
+    document.getElementById("audioplayer").play(); //plays background music
     }
 
-function update() {
-    if (pause) {
+function update() { //runs every second to update the game
+    if (pause) { //if the game is paused the game will not update
         return;
     }
-    requestAnimationFrame(update);
-    if(gameOver) {
-        document.getElementById("audioplayer").pause();
-        turnOn();
+
+    requestAnimationFrame(update); //updates the game
+
+    if(gameOver) { //if there is a game over the game will stop updating
+        document.getElementById("audioplayer").pause(); //pauses background music
+        turnOn(); //turns on the game over screen
         return; 
     }
-    context.clearRect(0, 0, board.width, board.height);
+
+    context.clearRect(0, 0, board.width, board.height); //clears the board
 
     //spoingus
-    velocityY += gravity;
-    spoingus.y = Math.min(spoingus.y + velocityY, spoingusY);
-    context.drawImage(spoingusimg, spoingus.x, spoingus.y, spoingus.width, spoingus.height);
+    velocityY += gravity; //adds gravity to velocityY
+    spoingus.y = Math.min(spoingus.y + velocityY, spoingusY); //sets spoingus y position
+    context.drawImage(spoingusimg, spoingus.x, spoingus.y, spoingus.width, spoingus.height); //draws spoingus
 
     //cucumbers
-    for (let i = 0; i < cucumbers.length; i++) {
-        let cucumber = cucumbers[i];
-        cucumber.x += velocityX;
-        context.drawImage(cucumber.img, cucumber.x, cucumber.y, cucumber.width, cucumber.height);
+    for (let i = 0; i < cucumbers.length; i++) { //loops through cucumbers
+        let cucumber = cucumbers[i]; //defines cucumber
+        cucumber.x += velocityX; //sets cucumber x position
+        context.drawImage(cucumber.img, cucumber.x, cucumber.y, cucumber.width, cucumber.height); //draws cucumber
 
-    if (detectCollision(spoingus, cucumber)) {
-        gameOver = true;
-        spoingusimg.src = "images/bingus.png";
-        spoingusimg.onload = function () {
-            context.drawImage(spoingusimg, spoingus.x, spoingus.y, spoingus.width, spoingus.height);
+    if (detectCollision(spoingus, cucumber)) { //if spoingus collides with a cucumber the game will end
+        gameOver = true; //sets game over boolean to true
+        spoingusimg.src = "images/bingus.png"; //sets spoingus image to bingus
+        spoingusimg.onload = function () { //when spoingus(bingus) image loads it will be drawn on the board
+            context.drawImage(spoingusimg, spoingus.x, spoingus.y, spoingus.width, spoingus.height); //draws spoingus (bingus)
         }
     }
 }
 
 //score
-context.fillStyle = "black";
-context.font="20px Courier";
-score++;
-context.fillText(score, 5, 20);
+context.fillStyle = "black"; //sets score color
+context.font="20px Courier"; //sets score font
+score++; //adds 1 to score
+context.fillText(score, 5, 20); //draws score
 } 
 
 function moveSpoingus(e) {
