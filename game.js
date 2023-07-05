@@ -40,7 +40,7 @@ let score = 0; //defines score
 let pause = false; //pause boolean
 let x = 1; //defines x
 
-var weezer = new Audio('buddy-holly-weezer-guitar-lick.mp3'); //defines lose music music
+var weezer = new Audio('audio/buddy-holly-weezer-guitar-lick.mp3'); //defines lose music music
 
 function pauseGame() { //when the pause button is clicked the game will pause.
     pause = true; //sets pause boolean to true
